@@ -30,27 +30,16 @@ export default function Home() {
     clearError,
   } = useGenerateDashboard();
 
-  // Auto-save to localStorage
+  // Restore only provider/model from localStorage (do not preload JSON or prompt examples)
   useEffect(() => {
-    const savedJson = localStorage.getItem('dashboard-json');
-    const savedPrompt = localStorage.getItem('dashboard-prompt');
     const savedProvider = localStorage.getItem('dashboard-provider');
     const savedModel = localStorage.getItem('dashboard-model');
-    
-    if (savedJson) setJsonInput(savedJson);
-    if (savedPrompt) setPromptInput(savedPrompt);
+
     if (savedProvider) setProvider(savedProvider as any);
     if (savedModel) setModel(savedModel);
-  }, [setJsonInput, setPromptInput, setProvider, setModel]);
+  }, [setProvider, setModel]);
 
-  useEffect(() => {
-    if (jsonInput) localStorage.setItem('dashboard-json', jsonInput);
-  }, [jsonInput]);
-
-  useEffect(() => {
-    if (promptInput) localStorage.setItem('dashboard-prompt', promptInput);
-  }, [promptInput]);
-
+  // Persist provider/model selection
   useEffect(() => {
     if (provider) localStorage.setItem('dashboard-provider', provider);
   }, [provider]);
