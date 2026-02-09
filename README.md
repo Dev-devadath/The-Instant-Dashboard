@@ -192,15 +192,6 @@ npm start
 npm run lint
 ```
 
-## Deployment
-
-The easiest way to deploy is using [Vercel](https://vercel.com):
-
-1. Push your code to GitHub
-2. Import your repository in Vercel
-3. Add your `OPENAI_API_KEY` environment variable
-4. Deploy!
-
 ## Limitations
 
 - Generated dashboards are HTML/CSS only (no JavaScript)
